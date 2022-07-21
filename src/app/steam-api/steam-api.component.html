@@ -1,0 +1,45 @@
+<div *ngIf="arrayCount">
+  <div class="d-flex justify-content-around my-4">
+    <button class="btn btn-primary" (click)="getCountSteam()" [disabled]="arrayCount.page === 1">
+      First
+    </button>
+    <button class="btn btn-primary" (click)="getCountSteam(arrayCount.page - 1)" [disabled]="arrayCount.page === 1">
+      Previous
+    </button>
+
+    <p>Page #{{arrayCount.page}}</p>
+
+    <button class="btn btn-primary" (click)="getCountSteam(arrayCount.page + 1)"
+      [disabled]="arrayCount.page === arrayCount.totalPages">
+      Next
+    </button>
+    <button class="btn btn-primary" (click)="getCountSteam(arrayCount.totalPages)"
+      [disabled]="arrayCount.page === arrayCount.totalPages">
+      Last
+    </button>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Nickname</th>
+        <th scope="col">Crée le</th>
+        <th scope="col">Nombre de Jeux</th>
+        <th scope="col">Pays</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of arrayCount.items">
+        <th>{{item.name}}</th>
+        <th>{{item.email}}</th>
+        <th>{{item.nickname}}</th>
+        <th>{{item.createdAt|date:'dd-MM-YYYY'}}</th>
+        <th>{{item.librariesCount}}</th>
+        <img class="img-fluid" [src]="item.country.urlFlag">
+      </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row" *ngIf="arrayGames">
+
+
+        <div class="col-lg-3 col-md-6 mb-2" id="card" *ngFor="let game of arrayGames.items">
+            <p class="text-center" id="title"><strong>{{ game.name }}</strong></p>
+            <img class="img-fluid" [src]="game.thumbnailCover">
+            <p class="text-center" id="level"># {{game.price}}</p>
+        </div>
+    </div>
+
+</div>
